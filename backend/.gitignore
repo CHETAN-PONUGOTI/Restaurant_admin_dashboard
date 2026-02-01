@@ -1,0 +1,23 @@
+# ignore .env files
+.env
+
+# ignore node_modules
+node_modules/
+# ignore log files
+*.log
+# ignore build output
+dist/
+build/
+# ignore temporary files
+*.tmp
+*.swp
+# ignore OS generated files
+.DS_Store
+Thumbs.db
+# ignore coverage reports
+coverage/
+# ignore IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
