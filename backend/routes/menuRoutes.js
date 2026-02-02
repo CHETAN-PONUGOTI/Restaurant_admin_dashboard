@@ -1,10 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { deleteMenuItem, toggleAvailability, updateMenuItem } = require('../controllers/menuController');
+const { 
+    getMenuItems, 
+    createMenuItem, 
+    updateMenuItem, 
+    deleteMenuItem, 
+    toggleAvailability 
+} = require('../controllers/menuController');
 
-// FIX: Ensure the route is /:id to match the frontend call api.delete(`/menu/${id}`)
-router.delete('/:id', deleteMenuItem);
-router.patch('/:id/availability', toggleAvailability);
+// Standard CRUD routes
+router.get('/', getMenuItems);
+router.post('/', createMenuItem);
 router.put('/:id', updateMenuItem);
+router.delete('/:id', deleteMenuItem);
+
+// Specialized route for availability toggle
+router.patch('/:id/availability', toggleAvailability);
 
 module.exports = router;

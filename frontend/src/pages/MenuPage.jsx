@@ -17,7 +17,6 @@ const MenuPage = () => {
   const fetchMenu = async () => {
     try {
       const { data } = await api.get('/menu');
-      // Ensure data is an array to prevent mapping errors
       setItems(Array.isArray(data) ? data : []);
     } catch (err) {
       toast.error("Failed to load menu");
@@ -27,7 +26,6 @@ const MenuPage = () => {
   };
 
   useEffect(() => { fetchMenu(); }, []);
-
   const handleToggle = async (id, currentStatus) => {
     try {
       await api.patch(`/menu/${id}/availability`);
@@ -47,7 +45,6 @@ const MenuPage = () => {
 
   const confirmDelete = async () => {
     try {
-      // Use the stored ID from state
       await api.delete(`/menu/${selectedItem}`);
       setItems(prev => prev.filter(i => i._id !== selectedItem));
       toast.success("Item removed from menu");
